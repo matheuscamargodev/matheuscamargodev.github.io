@@ -1,0 +1,141 @@
+.pokedex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-check {
+  position: relative;
+  z-index: 5;
+  text-align: right;
+}
+
+.sprites {
+  .form-check{
+    margin-left: 20px;
+  }
+  margin-bottom: 20px;
+  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.pokemon-card {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.bg-poke {
+  position: relative;
+}
+
+.pokemon-background {
+  width: 150px;
+  position: absolute;
+  z-index: 0 !important;
+  opacity: 0.5;
+  filter: invert(1);
+  transform: rotate(45deg) !important;
+  top: -2rem !important;
+  left: -1rem !important;
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  object-fit: contain;
+  margin-top: -40px;
+  margin-left: -12px;
+  z-index: 1;
+}
+
+.pokemon-info {
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 50px;
+  &__type {
+    background-color: #ffffff49;
+    padding: 0.1rem 0.4rem;
+    margin-top: 5px;
+    background-size: auto;
+    border-radius: 1rem;
+    display: table;
+    font-size: 0.625rem;
+  }
+}
+
+.pokemon-favorite {
+  font-size: 40px;
+  text-align: right;
+  i {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+
+.pokemon-comentario {
+  text-align: center;
+  margin-top: 23px;
+}
+
+.fighting {
+  background-color: #ce3f6a;
+}
+.psychic {
+  background-color: #f97077;
+}
+.poison {
+  background-color: #ab6ac8;
+}
+.dragon {
+  background-color: #096dc3;
+}
+.ghost {
+  background-color: #5269ab;
+}
+.dark {
+  background-color: #595365;
+}
+.ground {
+  background-color: #d97746;
+}
+.fire {
+  background-color: #fe9c53;
+}
+.fairy {
+  background-color: #ec8fe7;
+}
+.water {
+  background-color: #4d90d5;
+}
+.flying {
+  background-color: #8fa8de;
+}
+.normal {
+  background-color: #9098a2;
+}
+.rock {
+  background-color: #c6b889;
+}
+.electric {
+  background-color: #f4d23b;
+}
+.bug {
+  background-color: #90c02c;
+}
+.grass {
+  background-color: #63bb5c;
+}
+.ice {
+  background-color: #73cebf;
+}
+.steel {
+  background-color: #5a8fa1;
+}

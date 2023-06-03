@@ -11,15 +11,21 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  getPokemonListaComDetalhes(): Observable<any[]> {
-    const pokemonListUrl = `${this.apiUrl}/pokemon?limit=20`;
+  getPokemonListaComDetalhes(offset: string, limit: string): Observable<any[]> {
+    const pokemonListUrl = `${this.apiUrl}/pokemon?limit=${offset}&offset=${limit}`;
     return this.http.get(pokemonListUrl).pipe(
       map((response: any) => response.results),
       mergeMap((pokemonList: any[]) => {
-        const pokemonDetailsRequests = pokemonList.map(pokemon => this.http.get(pokemon.url));
+        const pokemonDetailsRequests = pokemonList.map((pokemon) =>
+          this.http.get(pokemon.url)
+        );
         return forkJoin(pokemonDetailsRequests);
       })
     );
   }
-  
+
+  getPokemonTextoListaComDetalhes(texto: string): Observable<any> {
+    const pokemonListUrl = `${this.apiUrl}/pokemon/${texto}?limit=20`;
+    return this.http.get(pokemonListUrl);
+  }
 }

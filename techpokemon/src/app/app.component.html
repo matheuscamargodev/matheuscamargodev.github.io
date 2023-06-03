@@ -7,7 +7,7 @@
 
 <div class="content" role="main">
   <div class="lista">
-    <app-pokemon-lista [pokemonLista]="pokemonLista"></app-pokemon-lista>
+    <pokemon-lista (carregaPokemons)="carregaPokemonsDetalhes($event);" [pokemonLista]="pokemonLista"></pokemon-lista>
   </div>
 
 </div>

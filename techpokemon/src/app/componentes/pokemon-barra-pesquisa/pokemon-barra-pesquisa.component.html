@@ -1,0 +1,11 @@
+
+<div class="input-group">
+    <input [(ngModel)]="campoPesquisa" type="text" class="form-control" placeholder="Pesquisar Pokemon...">
+    <mat-spinner *ngIf="loading" class="loading"></mat-spinner>
+    <i (click)="limparCampo()" *ngIf="campoPesquisa.length > 0 && !loading" class="bi bi-backspace delete"></i>
+    <div (click)="pesquisarCampos()" class="input-group-append">
+      <span class="input-group-text">
+        <i  class="bi bi-search"></i>
+      </span>
+    </div>
+  </div>

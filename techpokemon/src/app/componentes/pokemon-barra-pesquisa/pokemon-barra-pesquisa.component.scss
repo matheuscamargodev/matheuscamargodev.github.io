@@ -1,0 +1,21 @@
+.input-group {
+  margin-top: -5px;
+}
+.input-group-text {
+  cursor: pointer;
+}
+
+.loading {
+  position: absolute;
+  width: 20px !important;
+  right: 50px;
+  top: -30px;
+}
+.delete {
+  position: absolute;
+  right: 50px;
+  top: 8px;
+  color: red;
+  cursor: pointer;
+  z-index: 99;
+}

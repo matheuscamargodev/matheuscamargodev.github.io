@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PokemonService } from './services/pokemon.service';
+import { PokemonService } from './services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,20 @@ export class AppComponent {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.getPokemonListWithDetails();
+    this.carregaPokemonsDetalhes({ offset: 0, limit: 0});
   }
 
-  getPokemonListWithDetails(): void {
-    this.pokemonService.getPokemonListaComDetalhes().subscribe(
-      (pokemonList: any[]) => {
-        this.pokemonLista = pokemonList;
-        console.log(this.pokemonLista)
-      },
-      (error: any) => {
-        console.log('Error:', error);
-      }
-    );
+  carregaPokemonsDetalhes(dados: any): void {
+    this.pokemonService
+      .getPokemonListaComDetalhes(dados.offset, dados.limit)
+      .subscribe(
+        (pokemonList: any[]) => {
+          this.pokemonLista = pokemonList;
+          console.log(this.pokemonLista);
+        },
+        (error: any) => {
+          console.log('Error:', error);
+        }
+      );
   }
 }

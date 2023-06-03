@@ -1,55 +1,30 @@
 <div class="container">
-  <div class="sprites">
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        (change)="spriteAnimado = false"
-      />
-      <label class="form-check-label"> Sprite Estático </label>
+  <div class="row">
+    <div class="col-sm-7">
+      <pokemon-barra-pesquisa
+        (limpar)="limparCampoPesquisa()"
+        [loading]="loading"
+        (pesquisar)="pesquisarPokemons($event)"
+      ></pokemon-barra-pesquisa>
     </div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        (change)="spriteAnimado = true"
-        checked
-      />
-      <label class="form-check-label"> Sprite Animado </label>
+    <div class="col-sm-5">
+      <pokemon-radio-animado
+        (spriteAnimado)="setSpriteAnimado($event)"
+      ></pokemon-radio-animado>
     </div>
   </div>
 
   <div class="pokedex">
-    <div
-      class="pokemon-card {{ pokemon.types[0].type.name }}"
-      *ngFor="let pokemon of pokemonLista"
-    >
-      <div class="row">
-        <div class="col-sm-1 bg-poke">
-          <img
-            class="pokemon-image"
-            [src]="verificaSprite(pokemon)"
-            alt="Bulbasaur"
-          />
-          <img
-            class="pokemon-background"
-            src="https://pokemoncalc.web.app/en/assets/pokeball.svg"
-            alt="bulbasaur"
-          />
-        </div>
-        <div class="col-sm-2">
-          <div class="pokemon-info">
-            <div class="pokemon-info__name">{{ pokemon.name }}</div>
-            <div *ngFor="let tipo of pokemon.types" class="pokemon-info__type">
-              {{ tipo.type.name }}
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 pokemon-comentario">Aqui vem um comentário...</div>
-        <div class="col-sm-5 pokemon-favorite"><i class="bi bi-star"></i></div>
-      </div>
+    <div *ngFor="let pokemon of pokemonLista">
+      <pokemon-lista-card
+        [pokemon]="pokemon"
+        [spriteAnimado]="spriteAnimado"
+      ></pokemon-lista-card>
     </div>
   </div>
+</div>
+<div class="paginacao">
+  <button (click)="previousPage()" [disabled]="offset === 0">Anterior</button>
+  {{ pagina }}
+  <button (click)="nextPage()">Próxima</button>
 </div>

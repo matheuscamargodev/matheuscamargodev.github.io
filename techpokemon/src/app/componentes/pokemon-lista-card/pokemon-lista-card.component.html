@@ -20,7 +20,40 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-4 pokemon-comentario">Aqui vem um comentário...</div>
-    <div class="col-sm-5 pokemon-favorite"><i class="bi bi-star"></i></div>
+    <div class="col-sm-7 pokemon-comentario">
+      <p  *ngIf="(getComentario(pokemon.id) | async) != ''">
+        <i class="bi bi-chat-square-text-fill"></i>
+        <span>{{ getComentario(pokemon.id) | async }}</span>
+      </p>
+      <button
+        *ngIf="(getComentario(pokemon.id) | async) == ''"
+        class="adicionar-comentario"
+        [swal]="{
+          title: 'Digite um comentário...',
+          input: 'text',
+          showCancelButton: true,
+          confirmButtonText: 'Salvar',
+          cancelButtonText: 'Cancelar'
+        }"
+        (confirm)="adicionarComentario(pokemon.id, $event)"
+      >
+        Adicionar um comentário
+      </button>
+
+      <button
+      *ngIf="(getComentario(pokemon.id) | async) != ''"
+      class="remover-comentario"
+        [swal]="{
+          title: 'Deseja apagar o comentario ' + (getComentario(pokemon.id) | async) + '?',
+          showCancelButton: true,
+          confirmButtonText: 'Confirmar',
+          cancelButtonText: 'Cancelar'
+        }"
+        (confirm)="removerComentario($event,pokemon.id)"
+      >
+      <i class="bi bi-trash"></i>
+      </button>
+    </div>
+    <div class="col-sm-2 pokemon-favorite"><i class="bi bi-star"></i></div>
   </div>
 </div>

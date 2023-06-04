@@ -14,14 +14,31 @@
     </div>
   </div>
 
-  <div class="pokedex">
-    <div *ngFor="let pokemon of pokemonLista">
+
+
+  <ng-container class="pokedex" *ngIf="!(pokemonFiltrado$ | async) as data; else loadingTemplate">
+
+    <div *ngFor="let pokemon of (pokemonLista$ | async)?.pokemons">
+
       <pokemon-lista-card
         [pokemon]="pokemon"
         [spriteAnimado]="spriteAnimado"
       ></pokemon-lista-card>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #loadingTemplate>
+    <div class="pokedex">
+
+      <div *ngFor="let pokemon of (pokemonFiltrado$ | async)">
+
+        <pokemon-lista-card
+          [pokemon]="pokemon"
+          [spriteAnimado]="spriteAnimado"
+        ></pokemon-lista-card>
+      </div>
+    </div>
+  </ng-template>
+
 </div>
 <div class="paginacao">
   <button (click)="previousPage()" [disabled]="offset === 0">Anterior</button>

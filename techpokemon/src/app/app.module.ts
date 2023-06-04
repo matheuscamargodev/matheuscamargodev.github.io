@@ -13,6 +13,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { pokemonReducer } from './ngrx/pokemon.reducer';
+import { PokemonEffects } from './ngrx/pokemon.effects';
+import {
+  FilterComentariosPipe,
+  MapComentarioPipe,
+} from './pipes/verifica-vazio.pipe';
+import {
+  SweetAlert2LoaderService,
+  SweetAlert2Module,
+} from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -21,6 +33,8 @@ import { StoreModule } from '@ngrx/store';
     PokemonListaCardComponent,
     PokemonRadioAnimadoComponent,
     PokemonBarraPesquisaComponent,
+    FilterComentariosPipe,
+    MapComentarioPipe,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +44,13 @@ import { StoreModule } from '@ngrx/store';
     FormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({}, {}),
+    SweetAlert2Module,
+    SweetAlert2Module.forRoot(),
+    StoreModule.forRoot({ pokemons: pokemonReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
+    EffectsModule.forRoot([PokemonEffects]),
   ],
-  providers: [],
+  providers: [SweetAlert2LoaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

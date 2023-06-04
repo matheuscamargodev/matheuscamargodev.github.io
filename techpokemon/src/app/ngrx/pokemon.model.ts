@@ -3,7 +3,7 @@ export interface Pokemon {
   loading: boolean,
   pokemons: any[];
   filteredPokemons:any;
-
+  favoritos: any[];
 }
 
 export interface PokemonS {

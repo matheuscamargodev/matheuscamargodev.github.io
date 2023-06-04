@@ -12,19 +12,20 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { pokemonReducer } from './ngrx/pokemon.reducer';
 import { PokemonEffects } from './ngrx/pokemon.effects';
-import {
-  FilterComentariosPipe,
-  MapComentarioPipe,
-} from './pipes/verifica-vazio.pipe';
+import { RouterModule } from '@angular/router';
+
 import {
   SweetAlert2LoaderService,
   SweetAlert2Module,
 } from '@sweetalert2/ngx-sweetalert2';
+import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
+import { PokemonDetalhesComponent } from './componentes/pokemon-detalhes/pokemon-detalhes.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +34,17 @@ import {
     PokemonListaCardComponent,
     PokemonRadioAnimadoComponent,
     PokemonBarraPesquisaComponent,
-    FilterComentariosPipe,
-    MapComentarioPipe,
+    PokemonsComponent,
+    PokemonDetalhesComponent,
   ],
   imports: [
     BrowserModule,
     MatSnackBarModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule,
     FormsModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     SweetAlert2Module,

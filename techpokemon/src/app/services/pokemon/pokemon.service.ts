@@ -5,7 +5,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { ParamsConsulta } from 'src/app/ngrx/pokemon.model';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
 import { Store } from '@ngrx/store';
-import { adicionarComentario } from '../../ngrx/pokemon.actions';
+import { adicionarComentario, adicionarFavorito, removerFavorito } from '../../ngrx/pokemon.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +35,34 @@ export class PokemonService {
 
   getPokemons(): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon`);
+  }
+
+  getInformacoesSalvas(): void{
+    let comentarios: any = localStorage.getItem('comentarios');
+    comentarios = Object.entries(JSON.parse(comentarios));
+
+    let favoritos: any = localStorage.getItem('favoritos');
+    favoritos = Object.entries(JSON.parse(favoritos));
+
+    if (favoritos) {
+      for (let favorito of favoritos) {
+        const pokeid: number = favorito[0];
+        if (favorito[1]) {
+          this.store.dispatch(adicionarFavorito({ pokemonId: pokeid }));
+        } else if (!favorito[1])
+          this.store.dispatch(removerFavorito({ pokemonId: pokeid }));
+      }
+    }
+
+    if (comentarios) {
+      for (let comentario of comentarios) {
+        this.store.dispatch(
+          adicionarComentario({
+            pokemonId: comentario[0],
+            comentario: comentario[1],
+          })
+        );
+      }
+    }
   }
 }

@@ -36,10 +36,17 @@ export const limparPokemonsFiltrados = createAction(
   '[Pokemons] Limpar Pokemons Filtrados'
 );
 
-
-
-
 export const adicionarComentario = createAction(
   '[Pokemon] Adicionar Comentário',
   props<{ pokemonId: number; comentario: string }>()
+);
+
+export const adicionarFavorito = createAction(
+  '[Pokemon] Adicionar Pokemon Favorito',
+  props<{ pokemonId: number }>()
+);
+
+export const removerFavorito = createAction(
+  '[Pokemon] Remover Pokemon Favorito',
+  props<{ pokemonId: number }>()
 );

@@ -1,3 +1,6 @@
+<a  routerLink="/pokemon/{{ pokemon.id }}">
+
+
 <div class="pokemon-card {{ pokemon.types[0].type.name }}">
   <div class="row">
     <div class="col-sm-1 bg-poke">
@@ -21,12 +24,8 @@
       </div>
     </div>
     <div class="col-sm-7 pokemon-comentario">
-      <p  *ngIf="(getComentario(pokemon.id) | async) != ''">
-        <i class="bi bi-chat-square-text-fill"></i>
-        <span>{{ getComentario(pokemon.id) | async }}</span>
-      </p>
       <button
-        *ngIf="(getComentario(pokemon.id) | async) == ''"
+        *ngIf="!(getComentario(pokemon.id) | async)"
         class="adicionar-comentario"
         [swal]="{
           title: 'Digite um comentário...',
@@ -39,21 +38,41 @@
       >
         Adicionar um comentário
       </button>
-
-      <button
-      *ngIf="(getComentario(pokemon.id) | async) != ''"
-      class="remover-comentario"
-        [swal]="{
-          title: 'Deseja apagar o comentario ' + (getComentario(pokemon.id) | async) + '?',
-          showCancelButton: true,
-          confirmButtonText: 'Confirmar',
-          cancelButtonText: 'Cancelar'
-        }"
-        (confirm)="removerComentario($event,pokemon.id)"
-      >
-      <i class="bi bi-trash"></i>
-      </button>
+      <div *ngIf="!!(getComentario(pokemon.id) | async)" class="pokemon-extra">
+        <div>
+          <i class="bi bi-chat-square-text-fill balao"></i>
+          <span>{{ getComentario(pokemon.id) | async }}</span>
+        </div>
+        <div>
+          <button
+            *ngIf="(getComentario(pokemon.id) | async) != ''"
+            class="remover-comentario"
+            [swal]="{
+              title: 'Deseja apagar o seguinte comentario?',
+              text: (getComentario(pokemon.id) | async) + '',
+              showCancelButton: true,
+              confirmButtonText: 'Confirmar',
+              cancelButtonText: 'Cancelar'
+            }"
+            (confirm)="removerComentario($event, pokemon.id)"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-2 pokemon-favorite"><i class="bi bi-star"></i></div>
+    <div class="col-sm-2 pokemon-favorite">
+      <i
+        *ngIf="!(getFavorito(pokemon.id) | async) "
+        (click)="favoritar(pokemon.id)"
+        class="bi bi-star"
+      ></i>
+      <i
+        *ngIf="(getFavorito(pokemon.id) | async) "
+        (click)="desfavoritar(pokemon.id)"
+        class="bi bi-star-fill"
+      ></i>
+    </div>
   </div>
 </div>
+</a>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
 
 @Component({
   selector: 'pokemon-radio-animado',
@@ -8,10 +9,16 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class PokemonRadioAnimadoComponent {
   @Output() spriteAnimado = new EventEmitter<boolean>();
+  @Output() favoritos = new EventEmitter<boolean>();
   animadoValor: boolean = true;
-
+  apenasFavoritos: boolean = false;
+  color: ThemePalette = 'primary';
   setAnimado(valor:any) {
-    
     this.spriteAnimado.emit(valor);
+  }
+
+  mudarFavoritos(){
+    console.log("dale")
+    this.favoritos.emit(this.apenasFavoritos);
   }
 }

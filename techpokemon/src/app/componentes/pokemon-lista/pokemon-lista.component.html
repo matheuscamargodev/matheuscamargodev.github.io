@@ -1,44 +1,52 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-5">
       <pokemon-barra-pesquisa
         (limpar)="limparCampoPesquisa()"
         [loading]="loading"
         (pesquisar)="pesquisarPokemons($event)"
       ></pokemon-barra-pesquisa>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-7">
       <pokemon-radio-animado
         (spriteAnimado)="setSpriteAnimado($event)"
+        (favoritos)="apenasFavoritos($event)"
       ></pokemon-radio-animado>
     </div>
   </div>
 
-
-
-  <ng-container class="pokedex" *ngIf="!(pokemonFiltrado$ | async) as data; else loadingTemplate">
-
-    <div *ngFor="let pokemon of (pokemonLista$ | async)?.pokemons">
-
+  <ng-container class="pokedex" *ngIf="apenasFavoritados; else naoFavoritados">
+    <div *ngFor="let pokemon of pokemonFavoritos$ | async">
       <pokemon-lista-card
         [pokemon]="pokemon"
         [spriteAnimado]="spriteAnimado"
       ></pokemon-lista-card>
     </div>
   </ng-container>
-  <ng-template #loadingTemplate>
-    <div class="pokedex">
 
-      <div *ngFor="let pokemon of (pokemonFiltrado$ | async)">
-
+  <ng-template #naoFavoritados>
+    <ng-container
+      class="pokedex"
+      *ngIf="!(pokemonFiltrado$ | async) as data; else loadingTemplate"
+    >
+      <div *ngFor="let pokemon of (pokemonLista$ | async)?.pokemons">
         <pokemon-lista-card
           [pokemon]="pokemon"
           [spriteAnimado]="spriteAnimado"
         ></pokemon-lista-card>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #loadingTemplate>
+      <div class="pokedex">
+        <div *ngFor="let pokemon of pokemonFiltrado$ | async">
+          <pokemon-lista-card
+            [pokemon]="pokemon"
+            [spriteAnimado]="spriteAnimado"
+          ></pokemon-lista-card>
+        </div>
+      </div>
+    </ng-template>
   </ng-template>
-
 </div>
 <div class="paginacao">
   <button (click)="previousPage()" [disabled]="offset === 0">Anterior</button>

@@ -19,6 +19,16 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.pokemon-extra{
+  display: inline-flex;
+  .balao {
+    margin-right: 20px;
+  }
+  div{
+    margin-right: 10px;
+  }
+}
 .remover-comentario {
   background: #f44336;
   color: white;
@@ -28,6 +38,7 @@
   padding: 6px;
   padding-right: 8px;
   padding-left: 8px;
+  margin-top: -10px;
 }
 
 .pokemon-card {

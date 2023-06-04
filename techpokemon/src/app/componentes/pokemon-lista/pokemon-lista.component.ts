@@ -10,9 +10,10 @@ import {
 } from 'src/app/ngrx/pokemon.actions';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
-import { selectFilteredPokemons } from '../../ngrx/pokemon.selectors';
+import { selectFilteredPokemons, selectPokemonFavoritos } from '../../ngrx/pokemon.selectors';
 
 import { defaultIfEmpty, every } from 'rxjs/operators';
+import { CONSTANTES } from 'src/app/utils/constantes';
 
 @Component({
   selector: 'pokemon-lista',
@@ -31,7 +32,8 @@ export class PokemonListaComponent {
   loading: boolean = false;
   pokelista$: Observable<Pokemon[]> = new Observable<Pokemon[]>();
   pokemonFiltrado$: Observable<Pokemon[]> = new Observable<Pokemon[]>();
-
+  pokemonFavoritos$: Observable<Pokemon[]> = new Observable<Pokemon[]>();
+  apenasFavoritados: boolean = false;
   constructor(
     private pokemonService: PokemonService,
     private alert: AlertService,
@@ -57,8 +59,20 @@ export class PokemonListaComponent {
     this.store.dispatch(limparPokemonsFiltrados());
   }
 
+  apenasFavoritos(favoritos:any){
+    this.apenasFavoritados = favoritos;
+    if(favoritos){
+      this.pokemonFavoritos$ = this.store.select(selectPokemonFavoritos);
+      this.pokemonFavoritos$.subscribe(
+        (pokemonLista: any) => (console.log(pokemonLista))
+      );
+    }else{
+      this.carregaTodosPokemons();
+    }
+  }
+
   pesquisarPokemons(texto: string) {
-    if (texto.length == 0) return this.carregaTodosPokemons();
+    if (texto.length == CONSTANTES.is_empty) return this.carregaTodosPokemons();
     this.store.dispatch(loadPokemonsPesquisa({ texto: texto }));
     this.pokemonFiltrado$ = this.store.select(selectFilteredPokemons);
   }

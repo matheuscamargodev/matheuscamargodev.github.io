@@ -1,10 +1,18 @@
 import { Component, Input } from '@angular/core'; // First, import Input
-import { adicionarComentario } from '../../ngrx/pokemon.actions';
+import {
+  adicionarComentario,
+  adicionarFavorito,
+  removerFavorito,
+} from '../../ngrx/pokemon.actions';
 import { Store, select } from '@ngrx/store';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
 import { Observable, map } from 'rxjs';
-import { selectComentarios } from 'src/app/ngrx/pokemon.selectors';
-import { Pokemon } from 'src/app/ngrx/pokemon.model';
+import {
+  selectComentarios,
+  selectFavoritos,
+} from 'src/app/ngrx/pokemon.selectors';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pokemon-lista-card',
@@ -15,11 +23,13 @@ export class PokemonListaCardComponent {
   @Input() pokemon: any = {};
   @Input() spriteAnimado: boolean = true;
   comentarios$!: Observable<{ [id: number]: string }>;
+  favoritos$!: Observable<{ [id: number]: boolean }>;
   novoComentario: { [id: number]: string } = {};
 
-  constructor(private store: Store<PokemonState>) {}
+  constructor(private store: Store<PokemonState>, private router: Router) {}
   ngOnInit() {
     this.comentarios$ = this.store.select(selectComentarios);
+    this.favoritos$ = this.store.select(selectFavoritos);
   }
 
   verificaSprite(pokemon: any) {
@@ -33,13 +43,30 @@ export class PokemonListaCardComponent {
   }
 
   removerComentario(event: any, id: number) {
-    if(event){
-     this.adicionarComentario(id, "")
+    if (event) {
+      this.adicionarComentario(id, '');
     }
-
   }
 
   adicionarComentario(pokemonId: number, comentario: string) {
     this.store.dispatch(adicionarComentario({ pokemonId, comentario }));
+  }
+
+  abrirDetalhes(id: number) {
+    this.router.navigate(['pokemon', id]);
+  }
+
+  favoritar(pokemonId: number) {
+    this.store.dispatch(adicionarFavorito({ pokemonId }));
+    console.log('é o favoritas');
+  }
+
+  desfavoritar(pokemonId: number) {
+    this.store.dispatch(removerFavorito({ pokemonId }));
+    console.log('é o desfavoritas');
+  }
+
+  getFavorito(id: number) {
+    return this.favoritos$.pipe(map((favorito) => favorito[id]));
   }
 }

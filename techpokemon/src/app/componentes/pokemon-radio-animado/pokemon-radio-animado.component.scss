@@ -6,4 +6,12 @@
   text-align: right;
   display: flex;
   flex-direction: row-reverse;
+  white-space: pre;
+  font-size: 12px;
+}
+
+::ng-deep .mdc-form-field {
+  label {
+    font-size: 12px;
+  }
 }

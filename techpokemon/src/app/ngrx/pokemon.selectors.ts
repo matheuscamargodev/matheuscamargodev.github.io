@@ -17,8 +17,6 @@ export const selectPokemonFavoritos = createSelector(
       .filter(([_, isFavorite]) => isFavorite === true)
       .map(([pokemonId]) => Number(pokemonId));
 
-    console.log(favoritos);
-
     const pokemons = state.pokemons;
     let newArrPokemons = [];
     for (let pokemon of pokemons) {

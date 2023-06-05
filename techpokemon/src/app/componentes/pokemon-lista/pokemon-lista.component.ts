@@ -65,10 +65,7 @@ export class PokemonListaComponent {
   apenasFavoritos(favoritos: any) {
     this.apenasFavoritados = favoritos;
     if (favoritos) {
-      this.pokemonFavoritos$ = this.store.select(selectPokemonFavoritos);
-      this.pokemonFavoritos$.subscribe((pokemonLista: any) =>
-        console.log(pokemonLista)
-      );
+      this.pokemonFavoritos$ = this.store.select(selectPokemonFavoritos);     
     } else {
       this.carregaTodosPokemons();
     }

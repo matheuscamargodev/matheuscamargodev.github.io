@@ -53,18 +53,20 @@ export class PokemonListaCardComponent {
   }
 
   abrirDetalhes(id: number) {
-
-    window.open('/pokemon/'+id,'popup','"resizable=no, toolbar=no, scrollbars=no, menubar=no, status=no, directories=no, location=no, height=900'); return false;
+    window.open(
+      '/pokemon/' + id,
+      'popup',
+      '"resizable=no, toolbar=no, scrollbars=no, menubar=no, status=no, directories=no, location=no, height=900'
+    );
+    return false;
   }
 
   favoritar(pokemonId: number) {
     this.store.dispatch(adicionarFavorito({ pokemonId }));
-    console.log('é o favoritas');
   }
 
   desfavoritar(pokemonId: number) {
     this.store.dispatch(removerFavorito({ pokemonId }));
-    console.log('é o desfavoritas');
   }
 
   getFavorito(id: number) {

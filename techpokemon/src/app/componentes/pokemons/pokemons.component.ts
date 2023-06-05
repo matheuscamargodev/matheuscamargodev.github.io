@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {
   adicionarComentario,
   loadPokemons,
@@ -28,6 +28,16 @@ export class PokemonsComponent {
     private pokemonService: PokemonService,
     private store: Store<PokemonState>
   ) {}
+
+  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+    this.store.pipe(select(selectComentarios)).subscribe((comentarios) => {
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+    });
+    this.store.pipe(select(selectFavoritos)).subscribe((favoritos) => {
+      localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    });
+  }
+
   carregaPokemonsDetalhes(dados: ParamsConsulta): void {
     this.store.dispatch(loadPokemons(dados));
     this.pokemons$ = this.store.select((state) => state.pokemons);

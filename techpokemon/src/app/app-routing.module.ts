@@ -4,8 +4,13 @@ import { RouterModule, Routes, Route } from '@angular/router';
 import { PokemonsComponent } from './componentes/pokemons/pokemons.component';
 import { PokemonDetalhesComponent } from './componentes/pokemon-detalhes/pokemon-detalhes.component';
 
-const routes: Routes = [
+const defaultRoute: Route = {
+  path: '**',
+  redirectTo: 'pokemons/',
+};
 
+const routes: Routes = [
+  defaultRoute,
   { path: 'pokemons/', component: PokemonsComponent },
   { path: 'pokemon/:id', component: PokemonDetalhesComponent }
 

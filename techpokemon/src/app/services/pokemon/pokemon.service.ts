@@ -5,7 +5,11 @@ import { map, mergeMap } from 'rxjs/operators';
 import { ParamsConsulta } from 'src/app/ngrx/pokemon.model';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
 import { Store } from '@ngrx/store';
-import { adicionarComentario, adicionarFavorito, removerFavorito } from '../../ngrx/pokemon.actions';
+import {
+  adicionarComentario,
+  adicionarFavorito,
+  removerFavorito,
+} from '../../ngrx/pokemon.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +33,9 @@ export class PokemonService {
   }
 
   getPokemonTextoListaComDetalhes(texto: string): Observable<any> {
-    const pokemonListUrl = `${this.apiUrl}/pokemon/${texto}?limit=20`;
+    const pokemonListUrl = `${
+      this.apiUrl
+    }/pokemon/${texto.toLowerCase()}?limit=20`;
     return this.http.get(pokemonListUrl);
   }
 
@@ -37,11 +43,11 @@ export class PokemonService {
     return this.http.get(`${this.apiUrl}/pokemon`);
   }
 
-  getPokemonDetalhe(id:number): Observable<any> {
+  getPokemonDetalhe(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon/${id}`);
   }
 
-  getInformacoesSalvas(): void{
+  getInformacoesSalvas(): void {
     let comentarios: any = localStorage.getItem('comentarios');
     comentarios = Object.entries(JSON.parse(comentarios));
 

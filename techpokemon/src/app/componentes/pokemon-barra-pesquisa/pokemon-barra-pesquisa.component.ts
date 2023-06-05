@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'pokemon-barra-pesquisa',
+  selector: 'app-pokemon-barra-pesquisa',
   templateUrl: './pokemon-barra-pesquisa.component.html',
   styleUrls: ['./pokemon-barra-pesquisa.component.scss'],
 })

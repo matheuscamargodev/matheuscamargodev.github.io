@@ -37,6 +37,10 @@ export class PokemonService {
     return this.http.get(`${this.apiUrl}/pokemon`);
   }
 
+  getPokemonDetalhe(id:number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/pokemon/${id}`);
+  }
+
   getInformacoesSalvas(): void{
     let comentarios: any = localStorage.getItem('comentarios');
     comentarios = Object.entries(JSON.parse(comentarios));

@@ -1,0 +1,164 @@
+.cardPokemon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+
+  &__nome {
+    font-size: 33px;
+    text-transform: capitalize;
+    font-family: system-ui;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+  }
+
+  &__espacoImagem {
+    text-align: center;
+    object-fit: contain;
+    &__imagem {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -150px;
+      margin-right: auto;
+      margin-left: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+.text-center {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pokemon-info {
+  text-transform: capitalize;
+  font-weight: bold;
+
+  &__type {
+    background-color: #ffffff49;
+    padding: 0.1rem 0.4rem;
+    margin-top: 5px;
+    background-size: auto;
+    border-radius: 1rem;
+    font-size: 0.625rem;
+    text-align: center;
+  }
+  &__habilidades {
+    background-color: #ffffff49;
+    padding: 0.1rem 0.4rem;
+    margin-top: 5px;
+    background-size: auto;
+    border-radius: 1rem;
+    font-size: 12;
+    text-align: left;
+    margin-top: 5px;
+font-weight: bold;
+    text-align: center;
+  }
+}
+
+.bcrumbs{
+  padding: 6px;
+  border: solid 1px;
+  border-radius: 10px;
+  color: white;
+}
+
+.medidas{
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.detalhes {
+  z-index: 20 !important;
+  height: 100%;
+  width: 100%;
+  background: url("../../../assets/imgs/bg8.jpg");
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.fighting {
+  background-color: #ce3f6a;
+}
+
+.psychic {
+  background-color: #f97077;
+}
+
+.poison {
+  background-color: #ab6ac8;
+}
+
+.dragon {
+  background-color: #096dc3;
+}
+
+.ghost {
+  background-color: #5269ab;
+}
+
+.dark {
+  background-color: #595365;
+}
+
+.ground {
+  background-color: #d97746;
+}
+
+.fire {
+  background-color: #fe9c53;
+}
+
+.fairy {
+  background-color: #ec8fe7;
+}
+
+.water {
+  background-color: #4d90d5;
+}
+
+.flying {
+  background-color: #8fa8de;
+}
+
+.normal {
+  background-color: #9098a2;
+}
+
+.rock {
+  background-color: #c6b889;
+}
+
+.electric {
+  background-color: #f4d23b;
+}
+
+.bug {
+  background-color: #90c02c;
+}
+
+.grass {
+  background-color: #63bb5c;
+}
+
+.ice {
+  background-color: #73cebf;
+}
+
+.steel {
+  background-color: #5a8fa1;
+}

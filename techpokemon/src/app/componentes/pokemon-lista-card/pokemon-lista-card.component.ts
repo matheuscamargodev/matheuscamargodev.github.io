@@ -53,7 +53,8 @@ export class PokemonListaCardComponent {
   }
 
   abrirDetalhes(id: number) {
-    this.router.navigate(['pokemon', id]);
+
+    window.open('/pokemon/'+id,'popup','"resizable=no, toolbar=no, scrollbars=no, menubar=no, status=no, directories=no, location=no, height=900'); return false;
   }
 
   favoritar(pokemonId: number) {

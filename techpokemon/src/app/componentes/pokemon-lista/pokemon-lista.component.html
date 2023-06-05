@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-5">
-      <pokemon-barra-pesquisa
+      <app-pokemon-barra-pesquisa
         (limpar)="limparCampoPesquisa()"
         [loading]="loading"
         (pesquisar)="pesquisarPokemons($event)"
-      ></pokemon-barra-pesquisa>
+      ></app-pokemon-barra-pesquisa>
     </div>
     <div class="col-sm-7">
       <pokemon-radio-animado

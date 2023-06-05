@@ -10,7 +10,10 @@ import {
 } from 'src/app/ngrx/pokemon.actions';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
-import { selectFilteredPokemons, selectPokemonFavoritos } from '../../ngrx/pokemon.selectors';
+import {
+  selectFilteredPokemons,
+  selectPokemonFavoritos,
+} from '../../ngrx/pokemon.selectors';
 
 import { defaultIfEmpty, every } from 'rxjs/operators';
 import { CONSTANTES } from 'src/app/utils/constantes';
@@ -59,14 +62,14 @@ export class PokemonListaComponent {
     this.store.dispatch(limparPokemonsFiltrados());
   }
 
-  apenasFavoritos(favoritos:any){
+  apenasFavoritos(favoritos: any) {
     this.apenasFavoritados = favoritos;
-    if(favoritos){
+    if (favoritos) {
       this.pokemonFavoritos$ = this.store.select(selectPokemonFavoritos);
-      this.pokemonFavoritos$.subscribe(
-        (pokemonLista: any) => (console.log(pokemonLista))
+      this.pokemonFavoritos$.subscribe((pokemonLista: any) =>
+        console.log(pokemonLista)
       );
-    }else{
+    } else {
       this.carregaTodosPokemons();
     }
   }

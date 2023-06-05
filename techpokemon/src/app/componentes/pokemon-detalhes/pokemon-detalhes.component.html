@@ -1,1 +1,41 @@
-<p>pokemon-detalhes works!</p>
+<div class="detalhes">
+  <div class="cardPokemon">
+    <div class="cardPokemon__espacoImagem">
+      <img
+        class="cardPokemon__espacoImagem__imagem"
+        [src]="'assets/imgs/pokemons/poke_' + pokemon.id + '.gif'"
+        alt="Bulbasaur"
+      />
+      <div class="cardPokemon__nome">
+        {{ pokemon.name }}
+      </div>
+      <div class="pokemon-info">
+        <div *ngFor="let tipo of pokemon.types" class="pokemon-info__type">
+          <span class="{{ tipo.type.name }} bcrumbs">{{ tipo.type.name }}</span>
+        </div>
+      </div>
+
+      <div class="row medidas">
+        <div class="col-sm-6">
+          <div><strong>{{ converterKgPounds(pokemon.weight) }} Kg</strong></div>
+          <div>Peso</div>
+        </div>
+        <div class="col-sm-6">
+
+          <div><strong>{{ converterFootMetros(pokemon.height) }} m</strong></div>
+          <div>Altura</div>
+
+
+        </div>
+      </div>
+
+      <div class="text-center">Habilidades:</div>
+      <div
+        *ngFor="let habilidade of pokemon.abilities"
+        class="pokemon-info__habilidades"
+      >
+        {{ habilidade.ability.name }}
+      </div>
+    </div>
+  </div>
+</div>

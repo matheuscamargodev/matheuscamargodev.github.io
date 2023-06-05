@@ -10,14 +10,17 @@ import { Observable } from 'rxjs';
 
 import { ParamsConsulta, Pokemon } from '../../ngrx/pokemon.model';
 import { PokemonState } from '../../ngrx/pokemon.reducer';
-import { selectComentarios, selectFavoritos } from '../../ngrx/pokemon.selectors';
+import {
+  selectComentarios,
+  selectFavoritos,
+} from '../../ngrx/pokemon.selectors';
 import { CONSTANTES } from '../../utils/constantes';
 import { PokemonService } from '../../services/pokemon/pokemon.service';
 
 @Component({
   selector: 'pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.scss']
+  styleUrls: ['./pokemons.component.scss'],
 })
 export class PokemonsComponent {
   pokemons$: Observable<Pokemon[]> = new Observable<Pokemon[]>();
@@ -32,7 +35,10 @@ export class PokemonsComponent {
   }
 
   ngOnInit() {
-    this.carregaPokemonsDetalhes({ offset: CONSTANTES.offset, limit: CONSTANTES.limit });
+    this.carregaPokemonsDetalhes({
+      offset: CONSTANTES.offset,
+      limit: CONSTANTES.limit,
+    });
 
     window.addEventListener('beforeunload', () => {
       this.store.pipe(select(selectComentarios)).subscribe((comentarios) => {
@@ -44,10 +50,7 @@ export class PokemonsComponent {
     });
   }
 
-
-
   recuperaInformacoes() {
     this.pokemonService.getInformacoesSalvas();
   }
-
 }

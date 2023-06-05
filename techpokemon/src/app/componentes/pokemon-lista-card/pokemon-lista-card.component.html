@@ -1,9 +1,6 @@
-<a   (click)="abrirDetalhes(pokemon.id)">
-
-
 <div class="pokemon-card {{ pokemon.types[0].type.name }}">
   <div class="row">
-    <div class="col-sm-1 bg-poke">
+    <div (click)="abrirDetalhes(pokemon.id)" class="col-sm-1 bg-poke">
       <img
         class="pokemon-image"
         [src]="verificaSprite(pokemon)"
@@ -15,7 +12,7 @@
         alt="bulbasaur"
       />
     </div>
-    <div class="col-sm-2">
+    <div (click)="abrirDetalhes(pokemon.id)" class="col-sm-2">
       <div class="pokemon-info">
         <div class="pokemon-info__name">{{ pokemon.name }}</div>
         <div *ngFor="let tipo of pokemon.types" class="pokemon-info__type">
@@ -63,16 +60,15 @@
     </div>
     <div class="col-sm-2 pokemon-favorite">
       <i
-        *ngIf="!(getFavorito(pokemon.id) | async) "
+        *ngIf="!(getFavorito(pokemon.id) | async)"
         (click)="favoritar(pokemon.id)"
         class="bi bi-star"
       ></i>
       <i
-        *ngIf="(getFavorito(pokemon.id) | async) "
+        *ngIf="getFavorito(pokemon.id) | async"
         (click)="desfavoritar(pokemon.id)"
         class="bi bi-star-fill"
       ></i>
     </div>
   </div>
 </div>
-</a>

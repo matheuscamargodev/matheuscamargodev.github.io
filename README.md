@@ -1,4 +1,4 @@
-# Desafio técnico da SoftPlan
+# Desafio técnico
 
 Olá pessoal, Me chamo Matheus e como um amante de Pokemons, esse foi um desafio muito legal de participar.
 

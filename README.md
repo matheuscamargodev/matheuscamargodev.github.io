@@ -2,7 +2,7 @@
 
 Olá pessoal, Me chamo Matheus e como um amante de Pokemons, esse foi um desafio muito legal de participar.
 
-Mesmo que este projeto não seja selecionado, continuarei a trabalhar nele pois foi muito divertido desenvolver as telas e funcionalidades,
+Foi muito divertido desenvolver as telas e funcionalidades,
 já tive experiencias com essa api em projetos de joguinho anteriores que já fiz e sei que não consegui colocar tudo que eu queria, infelizmente não tive tempo para incrementar tudo que eu queria, quem sabe mais pra frente.
 
 Agradeço a oportunidade e segue os passos.

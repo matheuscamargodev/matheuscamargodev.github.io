@@ -1,0 +1,1948 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Backoffice Lib Docs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Backoffice Lib Docs</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Digite para pesquisar"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Componentes</li>
+  <li class="breadcrumb-item"
+  >
+  DrilldownComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>Arquivo</h3>
+</p>
+<p class="comment">
+    <code>projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Descrição</h3>
+    </p>
+    <p class="comment">
+        <p>Este componente exibe um botão estilizado.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">&lt;bo-drilldown [drillDownData]=&quot;&#39;{ header: [ { showFilter: true, type: &#39;cellTemplate&#39;, property: &#39;code&#39;, visible: true, label: &#39;Código&#39;, action: &#39;Link&#39;, }, { showFilter: true, property: &#39;store&#39;, visible: true, label: &#39;Loja&#39;, }, { showFilter: true, property: &#39;name&#39;, visible: true, label: &#39;Nome&#39;, }, { showFilter: true, property: &#39;fantasyName&#39;, visible: true, label: &#39;Nome Fantasia&#39;, }, { showFilter: true, property: &#39;risk&#39;, visible: true, label: &#39;Risco&#39;, }, ], items: [ { code: &#39;API001&#39;, store: &#39;01&#39;, name: &#39;CLIENTE API INCLUSAO&#39;, fantasyName: &#39;CLIENTE API INCLUSAO&#39;, risk: &#39;A&#39;, }, { code: &#39;API002&#39;, store: &#39;01&#39;, name: &#39;CLIENTE API ALTERACAO&#39;, fantasyName: &#39;API ALTERACAO&#39;, risk: &#39;A&#39;, }, { code: &#39;API003&#39;, store: &#39;01&#39;, name: &#39;CLIENTE API EXCLUSAO&#39;, fantasyName: &#39;API EXCLUSAO&#39;, risk: &#39;A&#39;, }, { code: &#39;API005&#39;, store: &#39;01&#39;, name: &#39;API 005 MANUT.COMISSAO ALTERA&#39;, fantasyName: &#39;API005&#39;, risk: &#39;A&#39;, }, { code: &#39;API006&#39;, store: &#39;01&#39;, name: &#39;API006 MANUT.COMISSAO DELETA&#39;, fantasyName: &#39;API006&#39;, risk: &#39;A&#39;, }, { code: &#39;API007&#39;, store: &#39;01&#39;, name: &#39;API007 - MATS030 - ALTERAR&#39;, fantasyName: &#39;API007 MATS030&#39;, risk: &#39;A&#39;, }, { code: &#39;API008&#39;, store: &#39;01&#39;, name: &#39;API008 - MATS030 - DELETAR&#39;, fantasyName: &#39;API008 MATS030&#39;, risk: &#39;A&#39;, }, { code: &#39;BETIM&#39;, store: &#39;01&#39;, name: &#39;LOJA BETIM&#39;, fantasyName: &#39;BETIM  MG&#39;, risk: &#39;A&#39;, }, { code: &#39;C16190&#39;, store: &#39;01&#39;, name: &#39;DSERFINR-16190&#39;, fantasyName: &#39;16190&#39;, risk: &#39;A&#39;, }, { code: &#39;CLIBH&#39;, store: &#39;01&#39;, name: &#39;CLIENTE BELO HORIZONTE&#39;, fantasyName: &#39;BELO HORIZONTE&#39;, risk: &#39;A&#39;, }, ], hasNext: true, }&#39;&quot; [drillDownName]=&quot;&#39;Faturamento&#39;&quot; [exportButton]=&quot;false&quot; [formatExport]=&quot;&#39;pdf;excel&#39;&quot; [drillDownHeight]=&quot;400&quot; &gt;&lt;/bo-drilldown&gt;</code></pre></div>
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>bo-drilldown</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>PoLoadingModule</code>
+                            <code>PoTableModule</code>
+                            <code>PoBreadcrumbModule</code>
+                            <code>CommonModule</code>
+                                <code><a href="../components/ExportButtonComponent.html" target="_self" >ExportButtonComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./drilldown.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./drilldown.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Propriedades</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#drillBreadcrumbs" >drillBreadcrumbs</a>
+                            </li>
+                            <li>
+                                <a href="#drillColumns" >drillColumns</a>
+                            </li>
+                            <li>
+                                <a href="#drillInitiated" >drillInitiated</a>
+                            </li>
+                            <li>
+                                <a href="#drillIsLoading" >drillIsLoading</a>
+                            </li>
+                            <li>
+                                <a href="#drillItems" >drillItems</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Métodos</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addBreadcrumb" >addBreadcrumb</a>
+                            </li>
+                            <li>
+                                <a href="#getAllItems" >getAllItems</a>
+                            </li>
+                            <li>
+                                <a href="#getBackToBreadcrumb" >getBackToBreadcrumb</a>
+                            </li>
+                            <li>
+                                <a href="#getBackToRoot" >getBackToRoot</a>
+                            </li>
+                            <li>
+                                <a href="#loadMoreItems" >loadMoreItems</a>
+                            </li>
+                            <li>
+                                <a href="#navigateDown" >navigateDown</a>
+                            </li>
+                            <li>
+                                <a href="#navigateUp" >navigateUp</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#updateComponent" >updateComponent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allDrillDownData" >allDrillDownData</a>
+                            </li>
+                            <li>
+                                <a href="#drillDownData" >drillDownData</a>
+                            </li>
+                            <li>
+                                <a href="#drillDownHeight" >drillDownHeight</a>
+                            </li>
+                            <li>
+                                <a href="#drillDownName" >drillDownName</a>
+                            </li>
+                            <li>
+                                <a href="#exportButton" >exportButton</a>
+                            </li>
+                            <li>
+                                <a href="#formatExport" >formatExport</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actionLinkClicked" >actionLinkClicked</a>
+                            </li>
+                            <li>
+                                <a href="#getAllItemsToExport" >getAllItemsToExport</a>
+                            </li>
+                            <li>
+                                <a href="#loadMoreClicked" >loadMoreClicked</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Construtor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(changeDetector: ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="137" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:137</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parâmetros :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Nome</td>
+                                                    <td>Tipo</td>
+                                                <td>Opcional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>changeDetector</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Não
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allDrillDownData"></a>
+                        <b>allDrillDownData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="../interfaces/DrillDownData.html" target="_self" >DrillDownData</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>{
+    header: [&quot;&quot;],
+    items: [],
+    hasNext: false,
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="87" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:87</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Todos os dados para export</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">{  header: any[];  items: any[];  hasNext: boolean;  }</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="drillDownData"></a>
+                        <b>drillDownData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="../interfaces/DrillDownData.html" target="_self" >DrillDownData</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>{
+    header: [&quot;&quot;],
+    items: [],
+    hasNext: false,
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="76" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:76</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dados do Drilldown</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">{  header: any[];  items: any[];  hasNext: boolean;  }</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="drillDownHeight"></a>
+                        <b>drillDownHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>400</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="69" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:69</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Altura/Tamanho da tabela.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">400</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="drillDownName"></a>
+                        <b>drillDownName</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="48" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:48</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Nome do Drilldown, vai aparecer na raiz do breadcrumbs.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">&#39;Faturamento&#39;</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="exportButton"></a>
+                        <b>exportButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="55" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:55</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Ativa ou desativa botão de exportar dados.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">false</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formatExport"></a>
+                        <b>formatExport</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="62" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:62</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Escolhe se quer exportar em pdf, excel ou ambos..</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">pdf;excel</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="actionLinkClicked"></a>
+                        <b>actionLinkClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="96" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:96</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento de clique em um action link.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAllItemsToExport"></a>
+                        <b>getAllItemsToExport</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="106" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:106</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento de clique em carregar mais itens.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loadMoreClicked"></a>
+                        <b>loadMoreClicked</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="101" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:101</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento de clique em carregar mais itens.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Métodos
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addBreadcrumb"></a>
+                    <span class="name">
+                        <span ><b>addBreadcrumb</b></span>
+                        <a href="#addBreadcrumb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addBreadcrumb(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, clickedValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="234"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adiciona um breadcrumb para a bandeja de breadcrumbs.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Valor padrão</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+                                            <td>
+                                                    <code>null</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>Row selecionada (opcional).</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>clickedValue</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+                                            <td>
+                                                    <code>&quot;&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    <ul>
+<li>Valor clicado (opcional).</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllItems"></a>
+                    <span class="name">
+                        <span ><b>getAllItems</b></span>
+                        <a href="#getAllItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllItems()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="283"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:283</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBackToBreadcrumb"></a>
+                    <span class="name">
+                        <span ><b>getBackToBreadcrumb</b></span>
+                        <a href="#getBackToBreadcrumb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBackToBreadcrumb(clickedValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="258"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:258</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega de volta para uma breadcrumb especifica.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clickedValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Valor clicado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBackToRoot"></a>
+                    <span class="name">
+                        <span ><b>getBackToRoot</b></span>
+                        <a href="#getBackToRoot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBackToRoot(clickedValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="272"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:272</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega de volta para raiz da tabela.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clickedValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Valor clicado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMoreItems"></a>
+                    <span class="name">
+                        <span ><b>loadMoreItems</b></span>
+                        <a href="#loadMoreItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMoreItems()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="223"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carrega mais itens da lista.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateDown"></a>
+                    <span class="name">
+                        <span ><b>navigateDown</b></span>
+                        <a href="#navigateDown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateDown(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, clickedValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="197"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:197</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega um nivel para baixo na hierarquia de drilldown.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Row selecionada.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>clickedValue</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dado do link que clicou.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateUp"></a>
+                    <span class="name">
+                        <span ><b>navigateUp</b></span>
+                        <a href="#navigateUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateUp(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, clickedValue: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="213"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega um nivel para cima na hierarquia de drilldown.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Row selecionada.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>clickedValue</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dado do link que clicou.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="146"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook que é chamado quando qualquer propriedade vinculada a dados de uma diretiva é alterada.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                        <code>SimpleChanges</code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>mudanças.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateComponent"></a>
+                    <span class="name">
+                        <span ><b>updateComponent</b></span>
+                        <a href="#updateComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateComponent()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="180"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o componente com novos dados.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Propriedades
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillBreadcrumbs"></a>
+                    <span class="name">
+                        <span ><b>drillBreadcrumbs</b></span>
+                        <a href="#drillBreadcrumbs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>PoBreadcrumbItem[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="132" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:132</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p> Níveis de breadcrumbs da bandeja.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">[ { &quot;label&quot;: &quot;Faturamento&quot; }, { &quot;label&quot;: &quot;A00812&quot; }, { &quot;label&quot;: &quot;005024&quot; } ]</code></pre></div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillColumns"></a>
+                    <span class="name">
+                        <span ><b>drillColumns</b></span>
+                        <a href="#drillColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>Array&lt;PoTableColumn&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="118" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Colunas da tabela.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">[{ &quot;property&quot;: &quot;order&quot;, &quot;label&quot;: &quot;Pedido&quot;, &quot;type&quot;: &quot;link&quot;, &quot;action&quot;: &quot;Link&quot;, &quot;showFilter&quot;: true, &quot;visible&quot;: true }]</code></pre></div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillInitiated"></a>
+                    <span class="name">
+                        <span ><b>drillInitiated</b></span>
+                        <a href="#drillInitiated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="111" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p> Flag para verificar se o drilldown foi iniciado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillIsLoading"></a>
+                    <span class="name">
+                        <span ><b>drillIsLoading</b></span>
+                        <a href="#drillIsLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="137" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag para verificar se o drilldown está carregando.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillItems"></a>
+                    <span class="name">
+                        <span ><b>drillItems</b></span>
+                        <a href="#drillItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>Array&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="125" class="link-to-prism">projects/bo-lib/src/lib/components/drilldown/drilldown.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p> Itens da tabela.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">[{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;prodgroup&quot;: &quot;&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4, &quot;lot&quot;: &quot;&quot;, &quot;sublot&quot;: &quot;&quot;, &quot;deliverydate&quot;: &quot;15/02/2022&quot;, &quot;emission&quot;: &quot;15/02/2022&quot;, &quot;paymentterms&quot;: &quot;003&quot;, &quot;amountsc6&quot;: &quot;&quot;, &quot;cfop&quot;: &quot;6603&quot;, &quot;serialnum&quot;: &quot;&quot; }]</code></pre></div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  ChangeDetectorRef,
+  ViewChild,
+} from &quot;@angular/core&quot;;
+import {
+  PoTableModule,
+  PoTableColumn,
+  PoBreadcrumbItem,
+  PoBreadcrumbModule,
+  PoLoadingModule,
+} from &quot;@po-ui/ng-components&quot;;
+import { ExportButtonComponent } from &quot;../export-button/export-button.component&quot;;
+
+/**
+ * Este componente exibe um botão estilizado.
+ *
+ * @example
+ * &lt;bo-drilldown [drillDownData]&#x3D;&quot;&#x27;{ header: [ { showFilter: true, type: &#x27;cellTemplate&#x27;, property: &#x27;code&#x27;, visible: true, label: &#x27;Código&#x27;, action: &#x27;Link&#x27;, }, { showFilter: true, property: &#x27;store&#x27;, visible: true, label: &#x27;Loja&#x27;, }, { showFilter: true, property: &#x27;name&#x27;, visible: true, label: &#x27;Nome&#x27;, }, { showFilter: true, property: &#x27;fantasyName&#x27;, visible: true, label: &#x27;Nome Fantasia&#x27;, }, { showFilter: true, property: &#x27;risk&#x27;, visible: true, label: &#x27;Risco&#x27;, }, ], items: [ { code: &#x27;API001&#x27;, store: &#x27;01&#x27;, name: &#x27;CLIENTE API INCLUSAO&#x27;, fantasyName: &#x27;CLIENTE API INCLUSAO&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API002&#x27;, store: &#x27;01&#x27;, name: &#x27;CLIENTE API ALTERACAO&#x27;, fantasyName: &#x27;API ALTERACAO&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API003&#x27;, store: &#x27;01&#x27;, name: &#x27;CLIENTE API EXCLUSAO&#x27;, fantasyName: &#x27;API EXCLUSAO&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API005&#x27;, store: &#x27;01&#x27;, name: &#x27;API 005 MANUT.COMISSAO ALTERA&#x27;, fantasyName: &#x27;API005&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API006&#x27;, store: &#x27;01&#x27;, name: &#x27;API006 MANUT.COMISSAO DELETA&#x27;, fantasyName: &#x27;API006&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API007&#x27;, store: &#x27;01&#x27;, name: &#x27;API007 - MATS030 - ALTERAR&#x27;, fantasyName: &#x27;API007 MATS030&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;API008&#x27;, store: &#x27;01&#x27;, name: &#x27;API008 - MATS030 - DELETAR&#x27;, fantasyName: &#x27;API008 MATS030&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;BETIM&#x27;, store: &#x27;01&#x27;, name: &#x27;LOJA BETIM&#x27;, fantasyName: &#x27;BETIM  MG&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;C16190&#x27;, store: &#x27;01&#x27;, name: &#x27;DSERFINR-16190&#x27;, fantasyName: &#x27;16190&#x27;, risk: &#x27;A&#x27;, }, { code: &#x27;CLIBH&#x27;, store: &#x27;01&#x27;, name: &#x27;CLIENTE BELO HORIZONTE&#x27;, fantasyName: &#x27;BELO HORIZONTE&#x27;, risk: &#x27;A&#x27;, }, ], hasNext: true, }&#x27;&quot; [drillDownName]&#x3D;&quot;&#x27;Faturamento&#x27;&quot; [exportButton]&#x3D;&quot;false&quot; [formatExport]&#x3D;&quot;&#x27;pdf;excel&#x27;&quot; [drillDownHeight]&#x3D;&quot;400&quot; &gt;&lt;/bo-drilldown&gt;
+ */
+
+@Component({
+  selector: &quot;bo-drilldown&quot;,
+  standalone: true,
+  imports: [
+    PoLoadingModule,
+    PoTableModule,
+    PoBreadcrumbModule,
+    CommonModule,
+    ExportButtonComponent,
+  ],
+  templateUrl: &quot;./drilldown.component.html&quot;,
+  styleUrl: &quot;./drilldown.component.css&quot;,
+})
+
+
+export class DrilldownComponent {
+  /**
+   * Nome do Drilldown, vai aparecer na raiz do breadcrumbs.
+   * @example
+   * &#x27;Faturamento&#x27;
+   */
+  @Input() drillDownName: string &#x3D; &quot;&quot;;
+
+  /**
+   * Ativa ou desativa botão de exportar dados.
+   * @example
+   * false
+   */
+  @Input() exportButton: boolean &#x3D; false;
+
+  /**
+   * Escolhe se quer exportar em pdf, excel ou ambos..
+   * @example
+   * pdf;excel
+   */
+  @Input() formatExport: string &#x3D; &quot;&quot;;
+
+  /**
+   * Altura/Tamanho da tabela.
+   * @example
+   * 400
+   */
+  @Input() drillDownHeight: number &#x3D; 400;
+
+  /**
+   * Dados do Drilldown
+   * @example
+   * {  header: any[];  items: any[];  hasNext: boolean;  }
+   */
+  @Input() drillDownData: DrillDownData &#x3D; {
+    header: [&quot;&quot;],
+    items: [],
+    hasNext: false,
+  };
+
+  /**
+   * Todos os dados para export
+   * @example
+   * {  header: any[];  items: any[];  hasNext: boolean;  }
+   */
+  @Input() allDrillDownData: DrillDownData &#x3D; {
+    header: [&quot;&quot;],
+    items: [],
+    hasNext: false,
+  };
+
+  /**
+   * Evento de clique em um action link.
+   */
+  @Output() actionLinkClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   * Evento de clique em carregar mais itens.
+   */
+  @Output() loadMoreClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   * Evento de clique em carregar mais itens.
+   */
+  @Output() getAllItemsToExport: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   *  Flag para verificar se o drilldown foi iniciado.
+   */
+  drillInitiated: boolean &#x3D; false;
+
+  /**
+   * Colunas da tabela.
+   * @example
+   * [{ &quot;property&quot;: &quot;order&quot;, &quot;label&quot;: &quot;Pedido&quot;, &quot;type&quot;: &quot;link&quot;, &quot;action&quot;: &quot;Link&quot;, &quot;showFilter&quot;: true, &quot;visible&quot;: true }]
+   */
+  drillColumns: Array&lt;PoTableColumn&gt; &#x3D; [];
+
+  /**
+   *  Itens da tabela.
+   * @example
+   * [{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;prodgroup&quot;: &quot;&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4, &quot;lot&quot;: &quot;&quot;, &quot;sublot&quot;: &quot;&quot;, &quot;deliverydate&quot;: &quot;15/02/2022&quot;, &quot;emission&quot;: &quot;15/02/2022&quot;, &quot;paymentterms&quot;: &quot;003&quot;, &quot;amountsc6&quot;: &quot;&quot;, &quot;cfop&quot;: &quot;6603&quot;, &quot;serialnum&quot;: &quot;&quot; }]
+   */
+  drillItems: Array&lt;any&gt; &#x3D; []; // Itens da tabela.
+
+  /**
+   *  Níveis de breadcrumbs da bandeja.
+   * @example
+   * [ { &quot;label&quot;: &quot;Faturamento&quot; }, { &quot;label&quot;: &quot;A00812&quot; }, { &quot;label&quot;: &quot;005024&quot; } ]
+   */
+  drillBreadcrumbs: PoBreadcrumbItem[] &#x3D; [];
+
+  /**
+   * Flag para verificar se o drilldown está carregando.
+   */
+  drillIsLoading: boolean &#x3D; false;
+
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  /**
+   * Lifecycle hook que é chamado quando qualquer propriedade vinculada a dados de uma diretiva é alterada.
+   * @param changes - mudanças.
+   * @autor Matheus Camargo B. da Costa
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes[&quot;drillDownData&quot;]) {
+      const previousValue &#x3D; changes[&quot;drillDownData&quot;].previousValue;
+      const currentValue &#x3D; changes[&quot;drillDownData&quot;].currentValue;
+
+      if (JSON.stringify(previousValue) !&#x3D;&#x3D; JSON.stringify(currentValue)) {
+        this.updateComponent();
+      } else {
+        console.log(&quot;No changes detected in data&quot;);
+        this.drillIsLoading &#x3D; false;
+      }
+    }
+
+    if (changes[&quot;allDrillDownData&quot;]) {
+      const previousValue &#x3D; changes[&quot;allDrillDownData&quot;].previousValue;
+      const currentValue &#x3D; changes[&quot;allDrillDownData&quot;].currentValue;
+
+      if (JSON.stringify(previousValue) !&#x3D;&#x3D; JSON.stringify(currentValue)) {
+        this.drillIsLoading &#x3D; false;
+      } else {
+        this.drillIsLoading &#x3D; false;
+      }
+    }
+
+    if (!this.drillInitiated) {
+      this.addBreadcrumb();
+      this.drillInitiated &#x3D; true;
+    }
+  }
+
+  /**
+   * Atualiza o componente com novos dados.
+   * @autor Matheus Camargo B. da Costa
+   */
+  updateComponent(): void {
+    if (
+      this.drillDownData.header.length &#x3D;&#x3D;&#x3D; 0 ||
+      this.drillDownData.items.length &#x3D;&#x3D;&#x3D; 0
+    )
+      return;
+    this.drillColumns &#x3D; this.drillDownData.header;
+    this.drillItems &#x3D; this.drillDownData.items;
+    this.drillIsLoading &#x3D; false;
+  }
+
+  /**
+   * Navega um nivel para baixo na hierarquia de drilldown.
+   * @param row - Row selecionada.
+   * @param clickedValue - Dado do link que clicou.
+   * @autor Matheus Camargo B. da Costa
+   */
+  navigateDown(row: any, clickedValue: string): void {
+    if (!row || !clickedValue) {
+      console.error(&quot;Erro: Propriedade inexistente ou valor inválido&quot;);
+      return;
+    }
+    this.addBreadcrumb(row, clickedValue);
+    this.drillIsLoading &#x3D; true;
+    this.actionLinkClicked.emit({ row, clickedValue });
+  }
+
+  /**
+   * Navega um nivel para cima na hierarquia de drilldown.
+   * @param row - Row selecionada.
+   * @param clickedValue - Dado do link que clicou.
+   * @autor Matheus Camargo B. da Costa
+   */
+  navigateUp(row: any, clickedValue: any): void {
+    this.getBackToBreadcrumb(clickedValue);
+    this.drillIsLoading &#x3D; true;
+    this.actionLinkClicked.emit(row);
+  }
+
+  /**
+   * Carrega mais itens da lista.
+   * @autor Matheus Camargo B. da Costa
+   */
+  loadMoreItems(): void {
+    this.drillIsLoading &#x3D; true;
+    this.loadMoreClicked.emit();
+  }
+
+  /**
+   * Adiciona um breadcrumb para a bandeja de breadcrumbs.
+   * @param row - Row selecionada (opcional).
+   * @param clickedValue - Valor clicado (opcional).
+   * @autor Matheus Camargo B. da Costa
+   */
+  addBreadcrumb(row: any &#x3D; null, clickedValue: string &#x3D; &quot;&quot;): void {
+    const breadcrumbItem: PoBreadcrumbItem &#x3D; {
+      label: row &#x3D;&#x3D; null ? this.drillDownName : clickedValue,
+      action: () &#x3D;&gt; {
+        if (row) this.navigateUp(row, clickedValue);
+        else this.getBackToRoot(this.drillDownName);
+      },
+    };
+
+    for (let breacrumb of this.drillBreadcrumbs) {
+      if (breacrumb.label &#x3D;&#x3D;&#x3D; breadcrumbItem.label) {
+        return;
+      }
+    }
+
+    this.drillBreadcrumbs.push(breadcrumbItem);
+    this.changeDetector.detectChanges();
+  }
+
+  /**
+   * Navega de volta para uma breadcrumb especifica.
+   * @param clickedValue - Valor clicado.
+   * @autor Matheus Camargo B. da Costa
+   */
+  getBackToBreadcrumb(clickedValue: any): void {
+    const index &#x3D; this.drillBreadcrumbs.findIndex(
+      (breadcrumb) &#x3D;&gt; breadcrumb.label &#x3D;&#x3D;&#x3D; clickedValue
+    );
+    if (index !&#x3D;&#x3D; -1) {
+      this.drillBreadcrumbs &#x3D; this.drillBreadcrumbs.slice(0, index + 1);
+    }
+  }
+
+  /**
+   * Navega de volta para raiz da tabela.
+   * @param clickedValue - Valor clicado.
+   * @autor Matheus Camargo B. da Costa
+   */
+  getBackToRoot(clickedValue: any): void {
+    const index &#x3D; this.drillBreadcrumbs.findIndex(
+      (breadcrumb) &#x3D;&gt; breadcrumb.label &#x3D;&#x3D;&#x3D; clickedValue
+    );
+    if (index !&#x3D;&#x3D; -1) {
+      this.drillBreadcrumbs &#x3D; this.drillBreadcrumbs.slice(0, index + 1);
+    }
+    this.drillIsLoading &#x3D; true;
+    this.actionLinkClicked.emit(null);
+  }
+
+  getAllItems(): void {
+    this.getAllItemsToExport.emit();
+  }
+}
+
+export interface DrillDownData {
+  header: any[];
+  items: any[];
+  hasNext: boolean;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;wrapper&quot;&gt;
+  &lt;po-loading-overlay *ngIf&#x3D;&quot;drillIsLoading&quot;&gt;&lt;/po-loading-overlay&gt;
+  &lt;po-breadcrumb [p-items]&#x3D;&quot;drillBreadcrumbs&quot;&gt;&lt;/po-breadcrumb&gt;
+  &lt;div&gt;
+    &lt;bo-export-button
+      *ngIf&#x3D;&quot;exportButton&quot;
+      [actions]&#x3D;&quot;formatExport&quot;
+      [dataToExport]&#x3D;&quot;drillItems&quot;
+      [allDataToExport]&#x3D;&quot;allDrillDownData.items&quot;
+      (getAllItemsToExport)&#x3D;&quot;getAllItems()&quot;
+    &gt;&lt;/bo-export-button&gt;
+    &lt;po-table
+      [p-container]&#x3D;&quot;&#x27;true&#x27;&quot;
+      [p-height]&#x3D;&quot;drillDownHeight&quot;
+      [p-columns]&#x3D;&quot;drillColumns&quot;
+      [p-items]&#x3D;&quot;drillItems&quot;
+      [p-loading-show-more]&#x3D;&quot;drillIsLoading&quot;
+      [p-show-more-disabled]&#x3D;&quot;!drillDownData.hasNext&quot;
+      (p-show-more)&#x3D;&quot;loadMoreItems()&quot;
+    &gt;
+      &lt;ng-template p-table-cell-template let-column&#x3D;&quot;column&quot; let-row&#x3D;&quot;row&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;column.action &#x3D;&#x3D; &#x27;Link&#x27;; else noHyperlink&quot;&gt;
+          &lt;span
+            (click)&#x3D;&quot;navigateDown(row, row[column.property])&quot;
+            class&#x3D;&quot;hyperlink&quot;
+          &gt;
+            {{ row[column.property] }}
+          &lt;/span&gt;
+          &lt;i class&#x3D;&quot;ph ph-fill ph-mouse-left-click noLine&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;ng-template #noHyperlink&gt;
+          {{ row[column.property] }}
+        &lt;/ng-template&gt;
+      &lt;/ng-template&gt;
+    &lt;/po-table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Elemento HTML</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Componente</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Elemento HTML com diretiva</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="wrapper">  <po-loading-overlay *ngIf="drillIsLoading"></po-loading-overlay>  <po-breadcrumb [p-items]="drillBreadcrumbs"></po-breadcrumb>  <div>    <bo-export-button      *ngIf="exportButton"      [actions]="formatExport"      [dataToExport]="drillItems"      [allDataToExport]="allDrillDownData.items"      (getAllItemsToExport)="getAllItems()"    ></bo-export-button>    <po-table      [p-container]="\'true\'"      [p-height]="drillDownHeight"      [p-columns]="drillColumns"      [p-items]="drillItems"      [p-loading-show-more]="drillIsLoading"      [p-show-more-disabled]="!drillDownData.hasNext"      (p-show-more)="loadMoreItems()"    >      <ng-template p-table-cell-template let-column="column" let-row="row">        <div *ngIf="column.action == \'Link\'; else noHyperlink">          <span            (click)="navigateDown(row, row[column.property])"            class="hyperlink"          >            {{ row[column.property] }}          </span>          <i class="ph ph-fill ph-mouse-left-click noLine"></i>        </div>        <ng-template #noHyperlink>          {{ row[column.property] }}        </ng-template>      </ng-template>    </po-table>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ChartsComponent', 'selector': 'bo-charts'},{'name': 'DrilldownComponent', 'selector': 'bo-drilldown'},{'name': 'ExportButtonComponent', 'selector': 'bo-export-button'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DrilldownComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> resultados correspondentes "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nenhum resultado correspondente "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DrilldownComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

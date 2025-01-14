@@ -1,0 +1,2027 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Backoffice Lib Docs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Backoffice Lib Docs</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Digite para pesquisar"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Componentes</li>
+  <li class="breadcrumb-item"
+  >
+  ExportButtonComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>Arquivo</h3>
+</p>
+<p class="comment">
+    <code>projects/bo-lib/src/lib/components/export-button/export-button.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>bo-export-button</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>PoButtonModule</code>
+                            <code>PoDropdownModule</code>
+                            <code>PoModalModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./export-button.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./export-button.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Propriedades</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#buttonActions" >buttonActions</a>
+                            </li>
+                            <li>
+                                <a href="#currentExporting" >currentExporting</a>
+                            </li>
+                            <li>
+                                <a href="#exportAllAction" >exportAllAction</a>
+                            </li>
+                            <li>
+                                <a href="#exportCurrentAction" >exportCurrentAction</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#exportModal" >exportModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Métodos</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkExportation" >checkExportation</a>
+                            </li>
+                            <li>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#exportExcelAll" >exportExcelAll</a>
+                            </li>
+                            <li>
+                                <a href="#exportExcelCurrent" >exportExcelCurrent</a>
+                            </li>
+                            <li>
+                                <a href="#exportExcellAllData" >exportExcellAllData</a>
+                            </li>
+                            <li>
+                                <a href="#exportExcelOpenModal" >exportExcelOpenModal</a>
+                            </li>
+                            <li>
+                                <a href="#exportPDFAll" >exportPDFAll</a>
+                            </li>
+                            <li>
+                                <a href="#exportPDFAllData" >exportPDFAllData</a>
+                            </li>
+                            <li>
+                                <a href="#exportPDFCurrent" >exportPDFCurrent</a>
+                            </li>
+                            <li>
+                                <a href="#exportPDFOpenModal" >exportPDFOpenModal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#saveFileExcel" >saveFileExcel</a>
+                            </li>
+                            <li>
+                                <a href="#saveFilePDF" >saveFilePDF</a>
+                            </li>
+                            <li>
+                                <a href="#updateComponent" >updateComponent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actions" >actions</a>
+                            </li>
+                            <li>
+                                <a href="#allDataToExport" >allDataToExport</a>
+                            </li>
+                            <li>
+                                <a href="#customTextExportExcel" >customTextExportExcel</a>
+                            </li>
+                            <li>
+                                <a href="#customTextExportPDF" >customTextExportPDF</a>
+                            </li>
+                            <li>
+                                <a href="#dataToExport" >dataToExport</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllItemsToExport" >getAllItemsToExport</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Construtor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(changeDetector: ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="112" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:112</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parâmetros :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Nome</td>
+                                                    <td>Tipo</td>
+                                                <td>Opcional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>changeDetector</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Não
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="actions"></a>
+                        <b>actions</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="79" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:79</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Ações a serem exibidas na tela, você pode optar por pdf, excel ou ambas separadas por ponto e virgula para exportação.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">&#39;pdf;excel&#39;</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allDataToExport"></a>
+                        <b>allDataToExport</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="93" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:93</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Todos os dados para exportação.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">[{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4 }]</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="customTextExportExcel"></a>
+                        <b>customTextExportExcel</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;Exportar Excel&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="107" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:107</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Texto personalizado para o botão de exportar Excel.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">&#39;Exportar Excel&#39;</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="customTextExportPDF"></a>
+                        <b>customTextExportPDF</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;Exportar PDF&quot;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="100" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:100</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Texto personalizado para o botão de exportar PDF.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">&#39;Exportar PDF&#39;</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataToExport"></a>
+                        <b>dataToExport</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="86" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:86</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dados atuais para exportação.</p>
+<b>Exemplo :</b><div><pre class="line-numbers"><code class="language-html">[{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4 }]</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAllItemsToExport"></a>
+                        <b>getAllItemsToExport</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Definido em <a href="" data-line="112" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:112</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento emitido ao solicitar todos os itens para exportação.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Métodos
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkExportation"></a>
+                    <span class="name">
+                        <span ><b>checkExportation</b></span>
+                        <a href="#checkExportation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkExportation(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="176"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica o tipo de exportação e chama a função correspondente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Tipo de exportação (&#39;current&#39; ou &#39;all&#39;).</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="202"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fecha o modal de exportação.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportExcelAll"></a>
+                    <span class="name">
+                        <span ><b>exportExcelAll</b></span>
+                        <a href="#exportExcelAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportExcelAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="219"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:219</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta todos os itens para Excel.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportExcelCurrent"></a>
+                    <span class="name">
+                        <span ><b>exportExcelCurrent</b></span>
+                        <a href="#exportExcelCurrent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportExcelCurrent()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="241"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:241</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta os dados atuais para Excel.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportExcellAllData"></a>
+                    <span class="name">
+                        <span ><b>exportExcellAllData</b></span>
+                        <a href="#exportExcellAllData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportExcellAllData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="228"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:228</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta todos os dados para Excel.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportExcelOpenModal"></a>
+                    <span class="name">
+                        <span ><b>exportExcelOpenModal</b></span>
+                        <a href="#exportExcelOpenModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportExcelOpenModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="210"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:210</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre o modal de exportação para Excel.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPDFAll"></a>
+                    <span class="name">
+                        <span ><b>exportPDFAll</b></span>
+                        <a href="#exportPDFAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportPDFAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="287"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:287</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta todos os itens para PDF.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPDFAllData"></a>
+                    <span class="name">
+                        <span ><b>exportPDFAllData</b></span>
+                        <a href="#exportPDFAllData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportPDFAllData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="312"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:312</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta todos os dados para PDF.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPDFCurrent"></a>
+                    <span class="name">
+                        <span ><b>exportPDFCurrent</b></span>
+                        <a href="#exportPDFCurrent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportPDFCurrent()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="296"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:296</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exporta os dados atuais para PDF.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPDFOpenModal"></a>
+                    <span class="name">
+                        <span ><b>exportPDFOpenModal</b></span>
+                        <a href="#exportPDFOpenModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportPDFOpenModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="278"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:278</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre o modal de exportação para PDF.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="121"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook que é chamado quando qualquer propriedade vinculada a dados de uma diretiva é alterada.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                        <code>SimpleChanges</code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>mudanças.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveFileExcel"></a>
+                    <span class="name">
+                        <span ><b>saveFileExcel</b></span>
+                        <a href="#saveFileExcel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveFileExcel(data: any[] | null, fileName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="256"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:256</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Salva os dados em um arquivo Excel.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>any[] | null</code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados a serem exportados.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>fileName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Nome do arquivo.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveFilePDF"></a>
+                    <span class="name">
+                        <span ><b>saveFilePDF</b></span>
+                        <a href="#saveFilePDF"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveFilePDF(data: any[] | null, fileName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="330"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:330</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Salva os dados em um arquivo PDF.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parâmetros :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome</td>
+                                                <td>Tipo</td>
+                                            <td>Opcional</td>
+                                                <td>Descrição</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>any[] | null</code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados a serem exportados.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>fileName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Não
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Nome do arquivo.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateComponent"></a>
+                    <span class="name">
+                        <span ><b>updateComponent</b></span>
+                        <a href="#updateComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateComponent()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definido em <a href="" data-line="150"
+                                    class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza as ações do componente de acordo com as ações disponíveis.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Retorna : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Propriedades
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonActions"></a>
+                    <span class="name">
+                        <span ><b>buttonActions</b></span>
+                        <a href="#buttonActions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>PoDropdownAction[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>[
+    {
+      label: &quot;Exportar PDF&quot;,
+      action: this.exportPDFOpenModal.bind(this),
+    },
+    {
+      label: &quot;Exportar Excel&quot;,
+      action: this.exportExcelOpenModal.bind(this),
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="47" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ações dos botões de dropdown.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentExporting"></a>
+                    <span class="name">
+                        <span ><b>currentExporting</b></span>
+                        <a href="#currentExporting"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="41" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Qual formato de arquivo está importando.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportAllAction"></a>
+                    <span class="name">
+                        <span ><b>exportAllAction</b></span>
+                        <a href="#exportAllAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>PoModalAction</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>{
+    label: &quot;Exportar todos os dados&quot;,
+    action: () &#x3D;&gt; this.checkExportation(&quot;all&quot;),
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="61" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ação de exportar tudo, ele chamará um evento output para requisitar todos os dados de fora.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportCurrentAction"></a>
+                    <span class="name">
+                        <span ><b>exportCurrentAction</b></span>
+                        <a href="#exportCurrentAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>PoModalAction</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valor padrão : </i><code>{
+    label: &quot;Exportar apenas dados em tela&quot;,
+    action: () &#x3D;&gt; this.checkExportation(&quot;current&quot;),
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="69" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ação de exportar só o que está sendo listado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportModal"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>exportModal</b></span>
+                        <a href="#exportModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Tipo : </i>    <code>PoModalComponent</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decoradores : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;exportModal&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definido em <a href="" data-line="36" class="link-to-prism">projects/bo-lib/src/lib/components/export-button/export-button.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  ChangeDetectorRef,
+  ViewChild,
+} from &quot;@angular/core&quot;;
+import {
+  PoButtonModule,
+  PoDropdownAction,
+  PoDropdownModule,
+} from &quot;@po-ui/ng-components&quot;;
+
+import * as XLSX from &quot;xlsx&quot;;
+import { saveAs } from &quot;file-saver&quot;;
+
+import jsPDF from &quot;jspdf&quot;;
+import autoTable from &quot;jspdf-autotable&quot;;
+
+import {
+  PoModalAction,
+  PoModalModule,
+  PoModalComponent,
+} from &quot;@po-ui/ng-components&quot;;
+
+@Component({
+  selector: &quot;bo-export-button&quot;,
+  standalone: true,
+  imports: [PoButtonModule, PoDropdownModule, PoModalModule],
+  templateUrl: &quot;./export-button.component.html&quot;,
+  styleUrls: [&quot;./export-button.component.css&quot;],
+})
+export class ExportButtonComponent {
+  @ViewChild(&quot;exportModal&quot;, { static: true }) exportModal!: PoModalComponent;
+
+  /**
+   * Qual formato de arquivo está importando.
+   */
+  currentExporting: string &#x3D; &quot;&quot;;
+
+  /**
+   * Ações dos botões de dropdown.
+   */
+
+  buttonActions: PoDropdownAction[] &#x3D; [
+    {
+      label: &quot;Exportar PDF&quot;,
+      action: this.exportPDFOpenModal.bind(this),
+    },
+    {
+      label: &quot;Exportar Excel&quot;,
+      action: this.exportExcelOpenModal.bind(this),
+    },
+  ];
+
+  /**
+   * Ação de exportar tudo, ele chamará um evento output para requisitar todos os dados de fora.
+   */
+  exportAllAction: PoModalAction &#x3D; {
+    label: &quot;Exportar todos os dados&quot;,
+    action: () &#x3D;&gt; this.checkExportation(&quot;all&quot;),
+  };
+
+  /**
+   * Ação de exportar só o que está sendo listado.
+   */
+  exportCurrentAction: PoModalAction &#x3D; {
+    label: &quot;Exportar apenas dados em tela&quot;,
+    action: () &#x3D;&gt; this.checkExportation(&quot;current&quot;),
+  };
+
+  /**
+   * Ações a serem exibidas na tela, você pode optar por pdf, excel ou ambas separadas por ponto e virgula para exportação.
+   * @example
+   * &#x27;pdf;excel&#x27;
+   */
+  @Input() actions: string &#x3D; &quot;&quot;;
+
+  /**
+   * Dados atuais para exportação.
+   * @example
+   * [{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4 }]
+   */
+  @Input() dataToExport: any &#x3D; [];
+
+  /**
+   * Todos os dados para exportação.
+   * @example
+   * [{ &quot;order&quot;: &quot;A00812&quot;, &quot;item&quot;: &quot;01&quot;, &quot;sequen&quot;: &quot;01&quot;, &quot;client&quot;: &quot;005024&quot;, &quot;store&quot;: &quot;00&quot;, &quot;name&quot;: &quot;5M COMERCIO ATACADIS&quot;, &quot;product&quot;: &quot;00040065901&quot;, &quot;prodname&quot;: &quot;ACHOC LIQ ITALAC 1L C/ TAMPA&quot;, &quot;saleprice&quot;: 3.43, &quot;sale&quot;: 480, &quot;amount&quot;: 1646.4 }]
+   */
+  @Input() allDataToExport: any &#x3D; [];
+
+  /**
+   * Texto personalizado para o botão de exportar PDF.
+   * @example
+   * &#x27;Exportar PDF&#x27;
+   */
+  @Input() customTextExportPDF: string &#x3D; &quot;Exportar PDF&quot;;
+
+  /**
+   * Texto personalizado para o botão de exportar Excel.
+   * @example
+   * &#x27;Exportar Excel&#x27;
+   */
+  @Input() customTextExportExcel: string &#x3D; &quot;Exportar Excel&quot;;
+
+  /**
+   * Evento emitido ao solicitar todos os itens para exportação.
+   */
+  @Output() getAllItemsToExport: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  /**
+   * Lifecycle hook que é chamado quando qualquer propriedade vinculada a dados de uma diretiva é alterada.
+   * @param changes - mudanças.
+   * @autor Matheus Camargo B. da Costa
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    const propertiesToCheck &#x3D; [&quot;actions&quot;, &quot;allDataToExport&quot;];
+
+    propertiesToCheck.forEach((property) &#x3D;&gt; {
+      if (changes[property]) {
+        const previousValue &#x3D; changes[property].previousValue;
+        const currentValue &#x3D; changes[property].currentValue;
+
+        if (JSON.stringify(previousValue) !&#x3D;&#x3D; JSON.stringify(currentValue)) {
+          if (property &#x3D;&#x3D;&#x3D; &quot;actions&quot;) {
+            this.updateComponent();
+          } else if (property &#x3D;&#x3D;&#x3D; &quot;allDataToExport&quot;) {
+            if (this.currentExporting &#x3D;&#x3D;&#x3D; &quot;excel&quot;) {
+              this.exportExcellAllData();
+            } else {
+              this.exportPDFAllData();
+            }
+          }
+        } else {
+          console.log(&#x60;No changes detected in ${property}&#x60;);
+        }
+      }
+    });
+  }
+
+  /**
+   * Atualiza as ações do componente de acordo com as ações disponíveis.
+   * @autor Matheus Camargo B. da Costa
+   */
+  updateComponent(): void {
+    if (this.actions !&#x3D; &quot;&quot;) {
+      this.buttonActions &#x3D; [];
+      for (let format of this.actions.split(&quot;;&quot;)) {
+        if (format &#x3D;&#x3D; &quot;pdf&quot;) {
+          this.buttonActions.push({
+            label: this.customTextExportPDF,
+            action: this.exportPDFOpenModal.bind(this),
+          });
+        }
+        if (format &#x3D;&#x3D; &quot;excel&quot;) {
+          this.buttonActions.push({
+            label: this.customTextExportExcel,
+            action: this.exportExcelOpenModal.bind(this),
+          });
+        }
+      }
+      this.changeDetector.detectChanges();
+    }
+  }
+
+  /**
+   * Verifica o tipo de exportação e chama a função correspondente.
+   * @param type - Tipo de exportação (&#x27;current&#x27; ou &#x27;all&#x27;).
+   * @autor Matheus Camargo B. da Costa
+   */
+  checkExportation(type: string): void {
+    const exportActions: any &#x3D; {
+      excel: {
+        current: this.exportExcelCurrent.bind(this),
+        all: this.exportExcelAll.bind(this),
+      },
+      pdf: {
+        current: this.exportPDFCurrent.bind(this),
+        all: this.exportPDFAll.bind(this),
+      },
+    };
+
+    const exportType &#x3D; this.currentExporting &#x3D;&#x3D;&#x3D; &quot;excel&quot; ? &quot;excel&quot; : &quot;pdf&quot;;
+    const action &#x3D; exportActions[exportType][type];
+
+    if (action) {
+      action();
+    } else {
+      console.error(&#x60;Invalid export type: ${type}&#x60;);
+    }
+  }
+
+  /**
+   * Fecha o modal de exportação.
+   * @autor Matheus Camargo B. da Costa
+   */
+  closeModal(): void {
+    this.exportModal.close();
+  }
+
+  /**
+   * Abre o modal de exportação para Excel.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportExcelOpenModal(): void {
+    this.currentExporting &#x3D; &quot;excel&quot;;
+    this.exportModal.open();
+  }
+
+  /**
+   * Exporta todos os itens para Excel.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportExcelAll(): void {
+    this.getAllItemsToExport.emit();
+    this.closeModal();
+  }
+
+  /**
+   * Exporta todos os dados para Excel.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportExcellAllData(): void {
+    if (!this.allDataToExport || this.allDataToExport.length &#x3D;&#x3D;&#x3D; 0) {
+      console.error(&#x27;No data available to export to Excel&#x27;);
+      return;
+    }
+    this.saveFileExcel(this.allDataToExport, &quot;export&quot;);
+    this.closeModal();
+  }
+
+  /**
+   * Exporta os dados atuais para Excel.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportExcelCurrent(): void {
+    if (!this.dataToExport || this.dataToExport.length &#x3D;&#x3D;&#x3D; 0) {
+      console.error(&#x27;No data available to export to Excel&#x27;);
+      return;
+    }
+    this.saveFileExcel(this.dataToExport, &quot;export&quot;);
+    this.closeModal();
+  }
+
+  /**
+   * Salva os dados em um arquivo Excel.
+   * @param data - Dados a serem exportados.
+   * @param fileName - Nome do arquivo.
+   * @autor Matheus Camargo B. da Costa
+   */
+  saveFileExcel(data: any[] | null, fileName: string): void {
+    if (!data || data.length &#x3D;&#x3D;&#x3D; 0) {
+      console.error(&#x27;No data available to export to Excel&#x27;);
+      return;
+    }
+    const worksheet: XLSX.WorkSheet &#x3D; XLSX.utils.json_to_sheet(data);
+    const workbook: XLSX.WorkBook &#x3D; XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, &quot;Sheet1&quot;);
+    const excelBuffer: any &#x3D; XLSX.write(workbook, {
+      bookType: &quot;xlsx&quot;,
+      type: &quot;array&quot;,
+    });
+    const blob: Blob &#x3D; new Blob([excelBuffer], {
+      type: &quot;application/octet-stream&quot;,
+    });
+    saveAs(blob, &#x60;${fileName}.xlsx&#x60;);
+  }
+
+  /**
+   * Abre o modal de exportação para PDF.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportPDFOpenModal(): void {
+    this.currentExporting &#x3D; &quot;pdf&quot;;
+    this.exportModal.open();
+  }
+
+  /**
+   * Exporta todos os itens para PDF.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportPDFAll(): void {
+    this.getAllItemsToExport.emit();
+    this.closeModal();
+  }
+
+  /**
+   * Exporta os dados atuais para PDF.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportPDFCurrent(): void {
+    if (!this.dataToExport || this.dataToExport.length &#x3D;&#x3D;&#x3D; 0) {
+      console.error(&#x27;No data available to export to Excel&#x27;);
+      return;
+    }
+    this.saveFilePDF(this.dataToExport, &quot;export&quot;);
+    this.closeModal();
+    setTimeout(() &#x3D;&gt; {
+      this.allDataToExport &#x3D; [];
+    }, 2000);
+  }
+
+  /**
+   * Exporta todos os dados para PDF.
+   * @autor Matheus Camargo B. da Costa
+   */
+  exportPDFAllData(): void {
+    if (!this.allDataToExport || this.allDataToExport.length &#x3D;&#x3D;&#x3D; 0) {
+      console.error(&#x27;No data available to export to Excel&#x27;);
+      return;
+    }
+    this.saveFilePDF(this.allDataToExport, &quot;export&quot;);
+    this.closeModal();
+    setTimeout(() &#x3D;&gt; {
+      this.allDataToExport &#x3D; [];
+    }, 2000);
+  }
+
+  /**
+   * Salva os dados em um arquivo PDF.
+   * @param data - Dados a serem exportados.
+   * @param fileName - Nome do arquivo.
+   * @autor Matheus Camargo B. da Costa
+   */
+  saveFilePDF(data: any[] | null, fileName: string): void {
+    if(!data) return;
+    const filteredData: any &#x3D; data.map((item) &#x3D;&gt; ({
+      Pedido: item.order,
+      Item: item.item,
+      Sequencia: item.sequen,
+      Cliente: item.client,
+      Loja: item.store,
+      NomeCliente: item.name,
+      Produto: item.product,
+      DescricaoProduto: item.prodname,
+      PrecoVenda: item.saleprice,
+      Quantidade: item.sale,
+      Total: item.amount,
+    }));
+    const doc &#x3D; new jsPDF({ format: &quot;a3&quot;, orientation: &quot;landscape&quot; });
+    const headers &#x3D; Object.keys(filteredData[0]);
+    const rows &#x3D; filteredData.map((obj: any) &#x3D;&gt; headers.map((key) &#x3D;&gt; obj[key]));
+
+    autoTable(doc, {
+      head: [headers],
+      body: rows,
+      columnStyles: {
+        0: { cellWidth: 25 },
+        1: { cellWidth: 25 },
+        2: { cellWidth: 25 },
+        3: { cellWidth: 25 },
+        4: { cellWidth: 25 },
+        5: { cellWidth: 80 },
+        6: { cellWidth: 40 },
+        7: { cellWidth: 80 },
+        8: { cellWidth: 20 },
+        9: { cellWidth: 20 },
+      },
+      styles: { fontSize: 10 },
+    });
+
+    doc.save(&#x60;${fileName}.pdf&#x60;);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;po-row&quot;&gt;
+  &lt;po-dropdown p-label&#x3D;&quot;Exportar Dados&quot; [p-actions]&#x3D;&quot;buttonActions&quot;&gt;
+  &lt;/po-dropdown&gt;
+&lt;/div&gt;
+
+&lt;po-modal #exportModal p-title&#x3D;&quot;Exportação&quot;&gt;
+  &lt;p&gt;Como você deseja exportar seus dados?&lt;/p&gt;
+
+  &lt;po-modal-footer&gt;
+    &lt;po-button [p-label]&#x3D;&quot;exportAllAction.label&quot; (p-click)&#x3D;&quot;checkExportation(&#x27;all&#x27;)&quot;&gt; &lt;/po-button&gt;
+    &lt;po-button [p-label]&#x3D;&quot;exportCurrentAction.label&quot; (p-click)&#x3D;&quot;checkExportation(&#x27;current&#x27;)&quot;&gt; &lt;/po-button&gt;
+  &lt;/po-modal-footer&gt;
+&lt;/po-modal&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./export-button.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Elemento HTML</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Componente</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Elemento HTML com diretiva</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="po-row">  <po-dropdown p-label="Exportar Dados" [p-actions]="buttonActions">  </po-dropdown></div><po-modal #exportModal p-title="Exportação">  <p>Como você deseja exportar seus dados?</p>  <po-modal-footer>    <po-button [p-label]="exportAllAction.label" (p-click)="checkExportation(\'all\')"> </po-button>    <po-button [p-label]="exportCurrentAction.label" (p-click)="checkExportation(\'current\')"> </po-button>  </po-modal-footer></po-modal></div>'
+    var COMPONENTS = [{'name': 'ChartsComponent', 'selector': 'bo-charts'},{'name': 'DrilldownComponent', 'selector': 'bo-drilldown'},{'name': 'ExportButtonComponent', 'selector': 'bo-export-button'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ExportButtonComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> resultados correspondentes "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nenhum resultado correspondente "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExportButtonComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
